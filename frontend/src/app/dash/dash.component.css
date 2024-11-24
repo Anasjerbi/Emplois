@@ -1,0 +1,28 @@
+
+.d{
+    position: absolute;
+    left: 0%;
+    top: 0%;
+    width: 20%;
+    height: 100%;
+    background-color: white;
+    border-radius: 10px;
+}
+
+.a{
+    position: absolute;
+    left: 7%;
+    top:10%;
+    font-size: 35PX;
+    font-weight: bold;
+    font-family: Helvetica, Arial, ;
+
+  }
+  .er{
+    position: absolute;
+    left: 3%;
+    top:10%;
+    font-size: 35PX;
+    border-radius: 10px;
+  }
+

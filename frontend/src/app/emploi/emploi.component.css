@@ -1,0 +1,191 @@
+.wouh {
+    position: absolute;
+    left: 23%;
+    top: -10%;
+    width: 77%;
+    height: 150%;
+    background-color: #f7f9ff;
+}
+
+.d {
+    position: absolute;
+    left: 25%;
+    top: 5%;
+}
+
+/* Container for the overall form */
+.d .container {
+    margin-top: 30px;
+    width: 100%; /* Ensures the container takes full width available */
+}
+
+/* Title */
+.title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Form content wrapper */
+.form-content {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Input boxes container */
+.input-boxes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+/* Individual input box */
+.input-box {
+    position: relative;
+    flex: 1 1 45%;
+    min-width: 250px;
+    margin-bottom: 20px;
+}
+
+/* Input fields with icons */
+.input-box input,
+.input-box select {
+    width: 100%;
+    padding: 10px 15px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    font-size: 14px;
+    color: #333;
+}
+
+/* Add icon inside the input fields */
+.input-box i {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    color: #888;
+    font-size: 16px;
+}
+
+/* Padding for inputs with icons */
+.input-box input,
+.input-box select {
+    padding-left: 40px;
+}
+
+/* File upload input */
+.input-box input[type="file"] {
+    padding: 5px;
+}
+
+/* Submit button */
+button[type="submit"] {
+    background-color: #007bff;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+}
+
+/* Button hover effect */
+button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+/* Disabled button */
+button[type="submit"]:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .input-box {
+        flex: 1 1 100%;
+    }
+
+    button[type="submit"] {
+        width: 100%;
+    }
+}
+
+/* Add some space between sections */
+.wouh {
+    margin-top: 20px;
+}
+
+/* Specific class for file input box */
+.input-box input[type="file"] {
+    display: block;
+    width: 100%;
+}
+
+/* Styling the select dropdown */
+select.form-control {
+    height: 40px;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    font-size: 14px;
+    padding: 10px;
+}
+
+/* Styling the select box options */
+select.form-control option {
+    padding: 10px;
+    background-color: #fff;
+}
+
+/* Adjustments for larger screens */
+@media (min-width: 768px) {
+    .input-box {
+        flex: 1 1 45%;
+    }
+}
+
+/* Table below the form */
+table {
+    width: 98%;
+     /* Table takes full width of the container */
+    border-collapse: collapse;
+    margin-top: 30px;  /* Add some space between the form and table */
+    font-family: Arial, sans-serif;
+    background-color: white; /* Set table background to white */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add box shadow for depth */
+    border-radius: 8px;
+    position: absolute;
+    left: 1%; /* Optional: rounded corners for the table */
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #007bff;
+    color: white;
+    font-size: 1.1rem;
+}
+
+td {
+    font-size: 1rem;
+}
+
+/* Zebra striping for rows */
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+tr:hover {
+    background-color: #f1f1f1;
+}

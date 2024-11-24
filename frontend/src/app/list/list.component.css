@@ -1,0 +1,93 @@
+
+.wouh{
+    position: absolute;
+    left: 23%;
+    top: 0%;
+    width: 77%;
+    height: 100%;
+    background-color: #f7f9ff;
+   
+}
+.d{
+    position: absolute;
+    left: 30%;
+    top:9%;}
+/* Table styling */
+table {
+    width: 150%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    font-family: Arial, sans-serif;
+    background-color: white; /* Set table background to white */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add box shadow for depth */
+    border-radius: 8px; /* Optional: rounded corners for the table */
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #007bff;
+    color: white;
+    font-size: 1.1rem;
+}
+
+td {
+    font-size: 1rem;
+}
+
+/* Zebra striping for rows */
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Action buttons */
+button {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    margin-right: 10px;
+    transition: background-color 0.3s;
+}
+
+.approve-btn {
+    background-color: #28a745;
+    color: white;
+}
+
+.approve-btn:hover {
+    background-color: #218838;
+}
+
+.disapprove-btn {
+    background-color: #dc3545;
+    color: white;
+}
+
+.disapprove-btn:hover {
+    background-color: #c82333;
+}
+
+/* Responsive design for smaller screens */
+@media screen and (max-width: 768px) {
+    table {
+        font-size: 0.9rem;
+    }
+
+    th, td {
+        padding: 10px;
+    }
+
+    button {
+        padding: 6px 12px;
+    }
+}

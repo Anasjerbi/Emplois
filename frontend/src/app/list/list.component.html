@@ -1,0 +1,25 @@
+<app-dashborda></app-dashborda>
+<div class="wouh"></div>
+<div class="d">
+    <table>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Classe</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+        <tr *ngFor="let customer of customers">
+          <td>{{ customer.name }}</td>
+          <td>{{ customer.email }}</td>
+          <td>{{ customer?.classe?.nomClasse }}</td>
+          <td>{{ customer.enable ? 'Approved' : 'Pending' }}</td>
+          <td>
+            <button (click)="approve(customer.id)">Approve</button>
+            <button (click)="disapprove(customer.id)">Disapprove</button>
+          </td>
+        </tr>
+      </table>
+</div>
+
+

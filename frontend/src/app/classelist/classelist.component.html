@@ -1,0 +1,62 @@
+<app-dashborda></app-dashborda>
+<div class="wouh"></div>
+<div class="d"><div class="container">
+    <h2>Class List</h2>
+  
+    <!-- Add/Edit Class Form -->
+    <div class="form-container">
+      <form *ngIf="!isEditing" (ngSubmit)="addClasse()">
+        <input type="text" [(ngModel)]="newClasse.nomClasse" name="nomClasse" placeholder="Class Name" required />
+        <select [(ngModel)]="newClasse.specialite" name="specialite" required>
+          <option value="" disabled selected>Select Speciality</option>
+          <option value="INFORMATIQUE">Informatique</option>
+          <option value="MECANIQUE">Mecanique</option>
+          <option value="ELECTRIQUE">Electrique</option>
+          <option value="GENIE_CIVILE">Genie Civile</option>
+        </select>
+        <select [(ngModel)]="newClasse.type" name="type" required>
+          <option value="" disabled selected>Select Type</option>
+          <option *ngFor="let type of types" [value]="type">{{ type }}</option>
+        </select>
+        <button type="submit">Add Class</button>
+      </form>
+  
+      <form *ngIf="isEditing" (ngSubmit)="saveClasse()">
+        <input type="text" [(ngModel)]="editingClasse.nomClasse" name="nomClasse" placeholder="Class Name" required />
+        <select [(ngModel)]="editingClasse.specialite" name="specialite" required>
+          <option value="INFORMATIQUE">Informatique</option>
+          <option value="MECANIQUE">Mecanique</option>
+          <option value="ELECTRIQUE">Electrique</option>
+          <option value="GENIE_CIVILE">Genie Civile</option>
+        </select>
+        <select [(ngModel)]="editingClasse.type" name="type" required>
+          <option *ngFor="let type of types" [value]="type">{{ type }}</option>
+        </select>
+        <button type="submit">Save Changes</button>
+      </form>
+    </div>
+  
+    <!-- List Classes -->
+    <table>
+      <thead>
+        <tr>
+          <th>Class Name</th>
+          <th>Speciality</th>
+          <th>Type</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let classe of classes">
+          <td>{{ classe.nomClasse }}</td>
+          <td>{{ classe.specialite }}</td>
+          <td>{{ classe.type }}</td>
+          <td>
+            <button (click)="editClasse(classe)">Edit</button>
+            <button (click)="deleteClasse(classe.id)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  </div>
