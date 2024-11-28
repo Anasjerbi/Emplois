@@ -36,6 +36,7 @@ public class WebSecurityConfiguration {
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/signup/**", "/login","/noToken/","/uploads/**").permitAll()
                         .requestMatchers("/api/**","/admin/**").authenticated()
+
                 )
                 .sessionManagement(session -> session
                         .sessionCreationPolicy(SessionCreationPolicy.STATELESS)

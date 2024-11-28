@@ -68,4 +68,31 @@ public class EmploiController {
         emploiService.deleteEmploi(id);
         return ResponseEntity.noContent().build();
     }
+    @PutMapping("/{id}")
+    public ResponseEntity<Emploi> updateEmploi(
+            @PathVariable Long id,
+            @RequestParam("nomClasse") String nomClasse,
+            @RequestParam("dateDebut") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate dateDebut,
+            @RequestParam("dateFin") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate dateFin,
+            @RequestParam(value = "file", required = false) MultipartFile file) throws IOException {
+
+        String filePath = null;
+
+        if (file != null) {
+            String uniqueFileName = UUID.randomUUID().toString() + "_" + file.getOriginalFilename();
+            filePath = "uploads/" + uniqueFileName;
+
+            Path path = Paths.get(filePath);
+            if (!Files.exists(path.getParent())) {
+                Files.createDirectories(path.getParent());
+            }
+
+            Files.copy(file.getInputStream(), path, StandardCopyOption.REPLACE_EXISTING);
+        }
+
+        Emploi updatedEmploi = emploiService.updateEmploi(id, nomClasse, dateDebut, dateFin, filePath);
+
+        return ResponseEntity.ok(updatedEmploi);
+    }
+
 }

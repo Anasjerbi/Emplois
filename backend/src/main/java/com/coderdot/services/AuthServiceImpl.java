@@ -3,6 +3,7 @@ package com.coderdot.services;
 import com.coderdot.dto.SignupRequest;
 import com.coderdot.entities.Classe;
 import com.coderdot.entities.Customer;
+import com.coderdot.entities.Role;
 import com.coderdot.repository.ClasseRepository;
 import com.coderdot.repository.CustomerRepository;
 import org.springframework.beans.BeanUtils;
@@ -48,10 +49,16 @@ public class AuthServiceImpl implements AuthService {
             classeOptional.ifPresent(customer::setClasse);
         }
 
+        // Set default role as ETUDIANT
+        customer.setRole(Role.ETUDIANT);
+
         // Save customer with default enable=false
         customer.setEnable(false);
-        Customer createdCustomer = customerRepository.save(customer);
-        return createdCustomer;
+
+        // Save and return the created customer
+        return customerRepository.save(customer);
     }
 }
+
+
 

@@ -30,41 +30,52 @@
                 <div class="input-box">
                   <i class="fas fa-file-upload"></i>
                   <input type="file" class="form-control" id="file" (change)="onFileSelected($event)" >
-                </div>              
+                </div>   
+                           
   
-                <button type="submit" class="btn btn-primary" [disabled]="emploiForm.invalid">Add Emploi</button>
+                <button type="submit" class="btn btn-primary" [disabled]="emploiForm.invalid">
+                  {{ selectedEmploiId ? 'Update Emploi' : 'Add Emploi' }}
+                </button>
+                
               </div>
             </form>
           </div>
         </div>
       </div>
           
-            <table class="table table-bordered">
-              <thead>
-                <tr>
-                  <th>Start Date</th>
-                  <th>End Date</th>
-                  <th>Class</th>
-                  <th>File</th>
-                  <th>Actions</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr *ngFor="let emploi of emplois">
-                  <td>{{ emploi.dateDebut | date:'shortDate' }}</td>
-                  <td>{{ emploi.dateFin | date:'shortDate' }}</td>
-                  <td>{{ emploi.classe.nomClasse }}</td> 
-                  <td>
-                    <img *ngIf="emploi.filePath" [src]="'http://localhost:8098/' + emploi.filePath" alt="Uploaded Image" width="100">
-                    <span *ngIf="!emploi.filePath">No file uploaded</span>
-                  </td>
-                    <td>
-    
-                    <button class="btn btn-danger" (click)="deleteEmploi(emploi.id)">Delete</button>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Class</th>
+            <th>File</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let emploi of emplois">
+            <td>{{ emploi.dateDebut | date:'shortDate' }}</td>
+            <td>{{ emploi.dateFin | date:'shortDate' }}</td>
+            <td>{{ emploi.classe.nomClasse }}</td>
+            <td>
+              <a *ngIf="emploi.filePath" [href]="'http://localhost:8098/' + emploi.filePath" target="_blank">
+                <img 
+                  [src]="'http://localhost:8098/' + emploi.filePath" 
+                  alt="Preview" 
+                  style="width: 100px; height: auto; cursor: pointer;"
+                />
+              </a>
+              <span *ngIf="!emploi.filePath">No file uploaded</span>
+            </td>
+            <td>
+              <button class="btn btn-primary edit-btn" (click)="editEmploi(emploi)">Edit</button>
+              <button class="btn btn-danger delete-btn" (click)="deleteEmploi(emploi.id)">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      
           </div>
 
  

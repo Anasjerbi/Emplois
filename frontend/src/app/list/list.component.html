@@ -1,25 +1,67 @@
 <app-dashborda></app-dashborda>
 <div class="wouh"></div>
+
+<DIV class="m">
+  <div class="ag-format-container">
+    <!-- Total Customers Card -->
+    <div class="ag-courses_box">
+      <div class="ag-courses_item">
+        <a href="#" class="ag-courses-item_link">
+          <div class="ag-courses-item_bg"></div>
+          <div class="ag-courses-item_title">
+            Total Students
+          </div>
+          <div class="ag-courses-item_date-box">
+            {{ customerCount }}
+          </div>
+        </a>
+      </div>
+
+      <!-- Total Classes Card -->
+      <div class="ag-courses_item">
+        <a href="#" class="ag-courses-item_link">
+          <div class="ag-courses-item_bg"></div>
+          <div class="ag-courses-item_title">
+            Total Classes
+          </div>
+          <div class="ag-courses-item_date-box">
+            {{ classCount }}
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</DIV>
+
+<!-- Table section -->
 <div class="d">
-    <table>
-        <tr>
-          <th>Name</th>
-          <th>Email</th>
-          <th>Classe</th>
-          <th>Status</th>
-          <th>Actions</th>
-        </tr>
-        <tr *ngFor="let customer of customers">
-          <td>{{ customer.name }}</td>
-          <td>{{ customer.email }}</td>
-          <td>{{ customer?.classe?.nomClasse }}</td>
-          <td>{{ customer.enable ? 'Approved' : 'Pending' }}</td>
-          <td>
-            <button (click)="approve(customer.id)">Approve</button>
-            <button (click)="disapprove(customer.id)">Disapprove</button>
-          </td>
-        </tr>
-      </table>
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Classe</th>
+      <th>Status</th>
+      <th>Actions</th>
+    </tr>
+    <tr *ngFor="let customer of filteredCustomers()">
+      <td>{{ customer.name }}</td>
+      <td>{{ customer.email }}</td>
+      <td>{{ customer?.classe?.nomClasse }}</td>
+      <td>{{ customer.enable ? 'Approved' : 'Pending' }}</td>
+      <td>
+        <button class="approve-btn" (click)="approve(customer.id)">Approve</button>
+        <button class="disapprove-btn" (click)="disapprove(customer.id)">Disapprove</button>
+        <button class="delete-btn" (click)="deleteCustomer(customer.id)">Delete</button>
+      </td>
+    </tr>
+  </table>
 </div>
+<div class="r">
+  <div>
+    <label for="classFilter">Search : </label>
+    <input id="classFilter" [(ngModel)]="classFilter" placeholder="Search with class name">
+  </div>
+</div>
+
 
 

@@ -3,6 +3,7 @@ package com.coderdot.controllers;
 import com.coderdot.entities.Classe;
 import com.coderdot.services.ClasseService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -27,6 +28,11 @@ public class ClasseController {
     @DeleteMapping("/{id}")
     public void supprimerClasse(@PathVariable Long id) {
         classeService.supprimerClasse(id);
+    }
+    @GetMapping("/countClasses")
+    public ResponseEntity<Long> countClasses() {
+        long classeCount = classeService.countClasses(); // Count classes
+        return ResponseEntity.ok(classeCount);
     }
 
 

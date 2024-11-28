@@ -1,0 +1,17 @@
+<div class="dashboard-container">
+    <div class="sidebar">
+        <div class="logo">
+            Hello, {{ username || 'Guest' }}
+          </div>
+          
+      <nav>
+        <ul>
+          <li><a [routerLink]="['/emploiss']" routerLinkActive="active" class="active"><i class="fas fa-tachometer-alt"></i> Emploi</a></li>
+          <li><a [routerLink]="['/password2']" routerLinkActive="active"><i class="fas fa-columns"></i> Change password</a></li>
+*
+        </ul>
+      </nav>
+    </div>
+    <!-- Main content section goes here -->
+  </div>
+  

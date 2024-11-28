@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 const BASE_URL = ["http://localhost:8098/"]
 
@@ -8,7 +8,19 @@ const BASE_URL = ["http://localhost:8098/"]
   providedIn: 'root'
 })
 export class JwtService {
+  private userSubject = new BehaviorSubject<any>(null);
+  user$ = this.userSubject.asObservable();
+  setUser(user: any) {
+    this.userSubject.next(user);
+  }
 
+  getUser() {
+    return this.userSubject.value;
+  }
+
+  clearUser() {
+    this.userSubject.next(null);
+  }
   constructor(private http: HttpClient) { }
 
   register(signRequest: any): Observable<any> {

@@ -53,4 +53,7 @@ public class ClasseService {
                 .filter(type -> type.getSpecialite().equalsIgnoreCase(specialite.name()))
                 .toList();
     }
+    public long countClasses() {
+        return classeRepository.count(); // Efficiently count rows in the table
+    }
 }

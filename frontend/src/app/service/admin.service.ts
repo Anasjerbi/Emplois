@@ -32,4 +32,14 @@ export class AdminService {
   listCustomers(): Observable<any[]> {
     return this.http.get<any[]>(`${BASE_URL}/admin/listStudents`, { headers: this.getHeaders() });
   }
+  deleteCustomer(id: number): Observable<any> {
+    return this.http.delete(`${BASE_URL}/admin/deleteUser/${id}`, { headers: this.getHeaders() });
+  }
+  countCustomers(): Observable<number> {
+    return this.http.get<number>(`${BASE_URL}/admin/countCustomers`,{ headers: this.getHeaders() });
+  }
+  countClasses(): Observable<number> {
+    return this.http.get<number>(`${BASE_URL}/api/classes/countClasses`,{ headers: this.getHeaders() });
+  }
+  
 }

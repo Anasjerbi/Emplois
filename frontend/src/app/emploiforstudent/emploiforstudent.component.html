@@ -1,0 +1,64 @@
+<app-dashboards></app-dashboards>
+<div class="wouh"></div>
+
+<div class="d"> <div class="ag-format-container">
+    <!-- Total Customers Card -->
+    <div class="ag-courses_box">
+      <div class="ag-courses_item">
+        <a href="#" class="ag-courses-item_link">
+          <div class="ag-courses-item_bg"></div>
+          <div class="ag-courses-item_title">
+            nomClasse
+          </div>
+          <div class="ag-courses-item_date-box">
+            {{ nomClasse }}
+          </div>
+        </a>
+      </div>
+
+      <!-- Total Classes Card -->
+      <div class="ag-courses_item">
+        <a href="#" class="ag-courses-item_link">
+          <div class="ag-courses-item_bg"></div>
+          <div class="ag-courses-item_title">
+            dateDebut
+          </div>
+          <div class="ag-courses-item_date-box">
+            {{ dateDebut }}
+          </div>
+        </a>
+      </div>
+      <div class="ag-courses_item">
+        <a href="#" class="ag-courses-item_link">
+          <div class="ag-courses-item_bg"></div>
+          <div class="ag-courses-item_title">
+            dateFin
+          </div>
+          <div class="ag-courses-item_date-box">
+            {{ dateFin }}
+          </div>
+        </a>
+      </div>
+    </div>
+  </div><div class="emploistudent-container">
+
+
+
+  
+  <div *ngIf="!nomClasse">
+    <p>No class information available for you.</p>
+  </div>
+
+  <!-- Displaying emploi file if available -->
+  <div *ngIf="emploi && emploi" class="j">
+
+    <a [href]="'http://localhost:8098/' + emploi" target="_blank">
+      <img 
+        [src]="'http://localhost:8098/' + emploi" 
+        alt="Preview" 
+        style="width: 870px; height: 400px; cursor: pointer;"
+      />
+    </a>
+  </div>
+</div>
+</div>

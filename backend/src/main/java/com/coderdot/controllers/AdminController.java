@@ -3,6 +3,7 @@ package com.coderdot.controllers;
 import com.coderdot.entities.Customer;
 import com.coderdot.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
@@ -58,4 +59,24 @@ public class AdminController {
         List<Customer> customerOptional = customerRepository.findAll();
             return ResponseEntity.ok(customerOptional);
     }
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+    @DeleteMapping("/deleteUser/{customerId}")
+    public ResponseEntity<?> deleteUser(@PathVariable Long customerId) {
+        Optional<Customer> customerOptional = customerRepository.findById(customerId);
+
+        if (customerOptional.isPresent()) {
+            customerRepository.deleteById(customerId);  // Delete the customer by ID
+            return ResponseEntity.ok().build(); // Return 200 OK with no body
+        } else {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Customer not found.");
+        }
+    }
+
+    @GetMapping("/countCustomers")
+    public ResponseEntity<Long> countCustomers() {
+        long customerCount = customerRepository.count()-1; // Count customers
+        return ResponseEntity.ok(customerCount);
+    }
+
+
 }

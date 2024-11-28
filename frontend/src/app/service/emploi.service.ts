@@ -35,4 +35,8 @@ export class EmploiService {
     const url = `${BASE_URL}/${id}`;
     return this.http.delete<any>(url, { headers: this.getHeaders() });
   }
+  updateEmploi(id: number, formData: FormData): Observable<any> {
+    const url = `${BASE_URL}/${id}`;
+    return this.http.put<any>(url, formData, { headers: this.getHeaders() });
+  }
 }

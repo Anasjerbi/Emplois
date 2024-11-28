@@ -8,6 +8,11 @@ import { DashComponent } from './dash/dash.component';
 import { ListComponent } from './list/list.component';
 import { ClasselistComponent } from './classelist/classelist.component';
 import { EmploiComponent } from './emploi/emploi.component';
+import { PasswordComponent } from './password/password.component';
+import { DashboardsComponent } from './dashboards/dashboards.component';
+import { EmploiforstudentComponent } from './emploiforstudent/emploiforstudent.component';
+import { Password2Component } from './password2/password2.component';
+
 
 
 const routes: Routes = [
@@ -20,6 +25,11 @@ const routes: Routes = [
   {path: "list", component : ListComponent},
   {path: "classel", component : ClasselistComponent},
   {path: "emploi", component : EmploiComponent},
+  {path: "password", component : PasswordComponent},
+  {path: "dashboards", component : DashboardsComponent},
+  {path: "emploiss", component : EmploiforstudentComponent},
+  {path: "password2", component : Password2Component},
+
 
 
 ];

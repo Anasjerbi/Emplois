@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { JwtService } from 'src/app/service/jwt.service';
+import {jwtDecode} from 'jwt-decode'; // Ensure jwt-decode is imported correctly
 
 @Component({
   selector: 'app-login',
@@ -10,7 +11,7 @@ import { JwtService } from 'src/app/service/jwt.service';
 })
 export class LoginComponent implements OnInit {
 
-  loginForm!: FormGroup ;
+  loginForm!: FormGroup;
 
   constructor(
     private service: JwtService,
@@ -20,37 +21,46 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.loginForm = this.fb.group({
-      email: ['', Validators.required, Validators.email],
+      email: ['', [Validators.required, Validators.email]], // Ensure proper validators
       password: ['', Validators.required],
-    })
+    });
   }
 
   submitForm() {
     this.service.login(this.loginForm.value).subscribe(
       (response) => {
-        console.log(response);
-  
-        // Check if a JWT is returned in the response
         if (response.jwt != null) {
-          alert("Hello, Your token is " + response.jwt);
           const jwtToken = response.jwt;
-  
+
           // Store the JWT token in localStorage
           localStorage.setItem('jwt', jwtToken);
-  
-          // Navigate to the dashboard after successful login
-          this.router.navigateByUrl("/list");
+          localStorage.setItem('user', JSON.stringify(response.user));
+
+
+          try {
+            // Decode the token to extract roles
+            const decodedToken: any = jwtDecode(jwtToken);
+            const roles = decodedToken.roles || []; // Extract roles safely
+          
+            if (roles.includes('ROLE_ADMIN')) {
+              this.router.navigateByUrl('/list'); // Redirect to admin page
+            } else if (roles.includes('ROLE_ETUDIANT')) {
+              this.router.navigateByUrl('/emploiss'); // Redirect to student page
+            } else {
+              alert('Role not recognized. Please contact support.');
+            }
+          } catch (error) {
+            console.error('Error decoding token:', error);
+            alert('Invalid token. Please try again.');
+          }
         } else {
-          alert("Your account is still not approved");
+          alert('Your account is still not approved.');
         }
       },
       (error) => {
-        // Handle error from the API call
-        console.error("Login error:", error);
-        alert("Your account is still not approved");
+        console.error('Login error:', error);
+        alert('Login failed. Please check your credentials or contact support.');
       }
     );
   }
-  
-
 }

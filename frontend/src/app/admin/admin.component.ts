@@ -36,4 +36,19 @@ export class AdminComponent implements OnInit {
   disapprove(id: number) {
     this.adminService.disapproveCustomer(id).subscribe(() => this.loadCustomers());
   }
+  deleteCustomer(id: number) {
+    if (confirm('Are you sure you want to delete this customer?')) { // Confirm deletion
+      this.adminService.deleteCustomer(id).subscribe({
+        next: () => {
+          alert('Customer deleted successfully');
+          this.loadCustomers(); // Reload the customer list
+        },
+        error: (err) => {
+          console.error('Error deleting customer:', err);
+          alert('Failed to delete customer');
+        }
+      });
+    }
+  }
+  
 }

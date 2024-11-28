@@ -13,7 +13,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #7d2ae8;
+  background: #1643cf;
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -87,7 +87,7 @@ body {
   height: 100%;
   width: 100%;
   opacity: 0.5;
-  background: #7d2ae8;
+  background: #1643cf;
 }
 
 .cover .text .text-1,
@@ -250,4 +250,77 @@ body {
   .container #flip:checked ~ .forms .login-form {
     display: none;
   }
+}
+/* Styling for the select dropdown */
+select {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  color: #333;
+  font-family: 'Arial', sans-serif;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+/* Add some focus effects for better UX */
+select:focus {
+  border-color: #007bff;
+  background-color: #fff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+/* Placeholder text style */
+select option[value=""][disabled] {
+  color: #aaa;
+}
+
+/* Styling for options */
+select option {
+  padding: 10px;
+  background: #fff;
+  color: #333;
+}
+/* Styling for the Register button */
+.btn {
+  display: inline-block;
+  width: 100%;
+  padding: 12px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  color: #fff;
+  background-color: #007bff; /* Primary button color */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+/* Hover effect */
+.btn:hover {
+  background-color: #0056b3; /* Darker shade for hover */
+  transform: translateY(-2px); /* Slight lift effect */
+}
+
+/* Disabled state */
+.btn:disabled {
+  background-color: #cccccc; /* Light grey for disabled state */
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+/* Active state */
+.btn:active {
+  background-color: #004085; /* Even darker shade for click */
+  transform: translateY(1px); /* Pressed-down effect */
+}
+
+/* Add a smooth transition effect for focus */
+.btn:focus {
+  outline: none;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Blue shadow for focus */
 }

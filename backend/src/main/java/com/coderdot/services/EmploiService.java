@@ -67,5 +67,26 @@ public class EmploiService {
     public void deleteEmploi(Long id) {
         emploiRepository.deleteById(id);
     }
+
+    public Emploi updateEmploi(Long id, String className, LocalDate dateDebut, LocalDate dateFin, String filePath) {
+        Emploi existingEmploi = emploiRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Emploi with ID " + id + " not found"));
+
+        Optional<Classe> optionalClasse = classeRepository.findByNomClasse(className);
+        if (optionalClasse.isEmpty()) {
+            throw new IllegalArgumentException("Classe with name " + className + " not found");
+        }
+
+        existingEmploi.setClasse(optionalClasse.get());
+        existingEmploi.setDateDebut(dateDebut);
+        existingEmploi.setDateFin(dateFin);
+        if (filePath != null) {
+            existingEmploi.setFilePath(filePath);
+        }
+
+        return emploiRepository.save(existingEmploi);
+    }
+
+
 }
 
